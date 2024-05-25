@@ -58,7 +58,7 @@ exports.actualizarDocente = async (req, res) => {
 exports.eliminarDocente = async (req, res) => {
     try {
         const { Ci } =  req.params;
-        const eliminado =  await docentes.destroy({
+        const eliminado =  await docente.destroy({
             where : {Ci_Docente : Ci}
         });
         if (eliminado)

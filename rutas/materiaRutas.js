@@ -4,8 +4,8 @@ const materiaControlador = require('../Controlador/materiaControlador');
 
 router.get('/', materiaControlador.getTodasLasMaterias);
 router.get('/busqueda', materiaControlador.buscarMateria);
-router.get('/:ID', materiaControlador.getMateriaPorID);
+router.get('/:id', materiaControlador.getMateriaPorID);
 router.post('/', materiaControlador.crearMateria);
-router.put('/:ID', materiaControlador.actualizarMateria);
-router.delete('/:ID', materiaControlador.eliminarMateria);
+router.put('/:id', materiaControlador.actualizarMateria);
+router.delete('/:id', materiaControlador.eliminarMateria);
 module.exports = router; 

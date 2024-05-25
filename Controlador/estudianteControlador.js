@@ -14,7 +14,8 @@ exports.getTodosLosEstudiantes = async (req, res) =>{
 
 exports.getEstudiantePorCi = async (req, res) => {
     try {
-       const { Ci } =  peticion.params;
+       const { Ci } =  req.params;
+       console.log(Ci);
        const estudiantes = await estudiante.findByPk(Ci);
         if (estudiantes) 
             res.json(estudiantes);

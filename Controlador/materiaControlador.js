@@ -13,8 +13,10 @@ exports.getTodasLasMaterias= async (req, res) =>{
 };
 exports.getMateriaPorID = async (req, res) => {
     try {
-       const { Id } =  peticion.params;
-       const materia = await materias.findByPk(Id);
+       const { id } =  req.params;
+       console.log(id);
+       const materia = await materias.findByPk(id);
+       console.log(materia);
         if (materia) 
             res.json(materia);
         else
@@ -38,15 +40,17 @@ exports.crearMateria = async (req, res) => {
 
 exports.actualizarMateria = async (req, res) => {
     try {
-        const { Id } =  req.params;
+        const { id } =  req.params;
+        console.log(id);
         const [materiaActualizado] = await materias.update(req.body,{
-            where : {ID_Materia: Id}
+            where : {ID_Materia: id}
         });
+        console.log(materiaActualizado);
         if (materiaActualizado){
-            const materia = await materia.findByPk(Ci);
+            const materia = await materias.findByPk(id);
             res.json(materia);
         } else {
-            res.status(404).json({mensaje: 'Materia no encontrada'})
+            res.status(404).json({mensaje: 'Materia no encontrada'});
         }
     } 
     catch (error) {
@@ -57,9 +61,9 @@ exports.actualizarMateria = async (req, res) => {
 
 exports.eliminarMateria = async (req, res) => {
     try {
-        const { Id } =  req.params;
+        const { id } =  req.params;
         const eliminado =  await materias.destroy({
-            where : {ID_Materia: Id}
+            where : {ID_Materia: id}
         });
         if (eliminado)
             res.status(200).json({mensaje: 'Materia eliminada'});
