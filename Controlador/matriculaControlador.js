@@ -5,8 +5,8 @@ const Seq = require ('sequelize');
 
 exports.getTodasLasMatriculas = async (req, res) => {
     try {
-        const matricula = await  matricula.findAll();
-        res.json(matricula);
+        const matriculas = await  matricula.findAll();
+        res.json(matriculas);
     } 
     catch (error) {
         console.log(error);

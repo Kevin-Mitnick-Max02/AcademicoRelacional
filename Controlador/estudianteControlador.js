@@ -3,8 +3,8 @@ const estudiante = require('../modelos/estudiante');
 const { Op } = require('sequelize'); 
 exports.getTodosLosEstudiantes = async (req, res) =>{
     try{
-        const estudiante = await estudiante.findAll ();
-        res.json(estudiante);
+        const estudiantes = await estudiante.findAll ();
+        res.json(estudiantes);
     }catch(error){
         console.log(error);
         res.status(500).send("Error del servidor");
@@ -15,9 +15,9 @@ exports.getTodosLosEstudiantes = async (req, res) =>{
 exports.getEstudiantePorCi = async (req, res) => {
     try {
        const { Ci } =  peticion.params;
-       const estudiante = await estudiante.findByPk(Ci);
-        if (estudiante) 
-            res.json(estudiante);
+       const estudiantes = await estudiante.findByPk(Ci);
+        if (estudiantes) 
+            res.json(estudiantes);
         else
             res.status(404).send({mensaje: 'Estudiante No Encontrado'})
     } 
@@ -44,8 +44,8 @@ exports.actualizarEstudiante = async (req, res) => {
             where : {Ci_Estudiante: Ci}
         });
         if (estudianteActualizado){
-            const estudiante = await estudiante.findByPk(Ci);
-            res.json(estudiante);
+            const estudiantes = await estudiante.findByPk(Ci);
+            res.json(estudiantes);
         } else {
             res.status(404).json({mensaje: 'Estudiante no encontrado'})
         }
@@ -76,10 +76,10 @@ exports.eliminarEstudiante = async (req, res) => {
 exports.buscarEstudiante = async (req, res) => {
     try {
         const { nombres } = req.query;
-        const estudiante = await estudiante.findAll({
+        const estudiantes = await estudiante.findAll({
             where : { nombres : { [Op.like] : `%${nombres}%`} }
         });
-        res .json(estudiante);
+        res .json(estudiantes);
     } 
     catch (error) {
         console.log(error);
