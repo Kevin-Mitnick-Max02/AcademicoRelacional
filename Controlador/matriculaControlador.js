@@ -15,16 +15,17 @@ exports.getTodasLasMatriculas = async (req, res) => {
 };
 
 exports.getMatriculaPorEstudiante = async (req, res) => {
-    const { nombreEstudiante } = peticion.params;
+    const { nombreEstudiante } = req.params;
     try {
         const estudianteEncontrado = await estudiante.findOne({ where : { nombres: nombreEstudiante } } );
+        //console.log(estudianteEncontrado);
         if (!estudianteEncontrado)
             return res.status(404).json({mensaje: 'Estudiante no encontrado'});
         const todasLasMatriculas = await matricula.findAll({
             where : {Ci_Estudiante : estudianteEncontrado.Ci_Estudiante },
             include: [{ model: estudiante, as: 'estudiante' }]
         });
-        res.json(todosVersiculos);
+        res.json(todasLasMatriculas);
     }
     catch(error){
         console.log(error);
@@ -34,13 +35,13 @@ exports.getMatriculaPorEstudiante = async (req, res) => {
 
 exports.contarMatriculaPorEstudiante = async (req, res) => {
     try {
-        const todasMatriculas = await Materia.findAll({
+        const todasMatriculas = await matricula.findAll({
             attributes: [
                 'Ci_Estudiante',
-                [Seq.fn('COUNT', Seq.col('ID_Matricula')), 'contarMatricula' ]
+                [Seq.fn('COUNT', Seq.col('ID_Matricula')), 'contarMatriculas' ]
             ],
-            group: ['Ci_Estudianteo'],
-            include: [{ model: estudiante, as: 'estudiantes', attributes: ['nombres'] }]
+            group: ['Ci_Estudiante'],
+            include: [{ model: estudiante, as: 'estudiante', attributes: ['nombres'] }]
         });
         res.json(todasMatriculas);
     }

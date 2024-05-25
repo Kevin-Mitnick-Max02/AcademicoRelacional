@@ -4,7 +4,7 @@ const matriculaControlador = require('../Controlador/matriculaControlador');
 router.get('/', matriculaControlador.getTodasLasMatriculas);
 // CONSULTAS - REPORTES
 // BUSCAR MATRICULAS DE UN ESTUDIANTE : NUMEROS
-router.get('/matricula/:nombreMatricula', matriculaControlador.getMatriculaPorEstudiante);
+router.get('/estudiante/:nombreEstudiante', matriculaControlador.getMatriculaPorEstudiante);
 // contar Matriculas por cada Estudiante
 router.get('/contar', matriculaControlador.contarMatriculaPorEstudiante);
 
