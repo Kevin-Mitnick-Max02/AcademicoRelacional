@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const matriculaControlador = require('../Controlador/matriculaControlador');
+const matriculaControlador = require('../Controllers/matriculaControlador');
 router.get('/', matriculaControlador.getTodasLasMatriculas);
 // CONSULTAS - REPORTES
 // BUSCAR MATRICULAS DE UN ESTUDIANTE : NUMEROS

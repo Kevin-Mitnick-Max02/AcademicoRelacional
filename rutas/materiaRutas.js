@@ -1,6 +1,6 @@
 const express = require ('express');
 const router = express.Router();
-const materiaControlador = require('../Controlador/materiaControlador');
+const materiaControlador = require('../Controllers/materiaControlador');
 
 router.get('/', materiaControlador.getTodasLasMaterias);
 router.get('/busqueda', materiaControlador.buscarMateria);

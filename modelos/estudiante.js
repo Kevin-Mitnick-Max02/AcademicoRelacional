@@ -8,7 +8,7 @@ const estudiante = sequelize.define('estudiantes',{
     },
     nombres : {
         type : DataTypes.STRING,
-       // allowNull : false
+       // allowNull : false 
     },
     apellidos : {
         type : DataTypes.STRING,
