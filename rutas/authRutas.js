@@ -2,6 +2,8 @@ const express = require ('express');
 const router = express.Router();
 const authControlador = require ('../Controllers/authControlador')
 
+//router.get('/', authControlador.bienvenida);
+
 router.post('/registro',authControlador.registroUsuario);
 router.post('/inicio-sesion',authControlador.inicioSesion);
 router.post('/cierre-sesion',authControlador.cierreSesion);

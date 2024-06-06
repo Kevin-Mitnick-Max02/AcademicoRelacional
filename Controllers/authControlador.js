@@ -6,11 +6,13 @@ exports.registroUsuario = async ( req, res) => {
     const hashed = await bcrypt.hash(password, 10);
     try{
          const usuarioCreado = await User.create({ username, password: hashed });
-         res.status(201).send('usuario Creado');
+         //res.status(201).send('usuario Creado');
+         res.render('registro');
     } catch(error){
     console.log(error);
         res.status(400).send('Error al crear usuario');
     }
+    res.render('registro');
 };
 exports.inicioSesion = async (req, res, next) =>{
     passport.authenticate('local', (err, usuario, info) =>{

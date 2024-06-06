@@ -10,9 +10,12 @@ const matriculaRutas = require ('./rutas/matriculaRutas');
 const materiaRutas = require ('./rutas/materiaRutas');
 const docenteRutas = require ('./rutas/docenteRutas');
 const app = express();
+// Configuracion es de vista
+app.set('view engine', 'ejs');
+app.set('views', __dirname,'/views');
 //-----configuraciones del cors
 const corsOption ={
-    origin : 'http://ejemplo.com',
+    origin : '*',
     methods : 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
     credentials : true
@@ -21,7 +24,9 @@ app.use(cors(corsOption)); // Cors con opciones confuguradas
 // Middleware
 app.use(express.json());
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended : false}));
+// directorio publico
+app.use(express.static('public'));
 app.use(session({
     secret:'clave_secreta',
     resave: false,
@@ -31,8 +36,10 @@ app.use(passport.initialize());
 app.use(session());
 passportConfig(passport);
 const authRutas = require('./rutas/authRutas');
-
 // Rutas
+app.get('/', (req, res)=>{
+    res.render('/index');
+})
 app.use('/auth', authRutas);
 
 app.use('/api/estudiante', estudianteRutas);
