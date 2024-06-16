@@ -3,11 +3,15 @@ const router = express.Router();
 const authControlador = require ('../Controllers/authControlador')
 
 //router.get('/', authControlador.bienvenida);
+//router.get('/Usuarios',authControlador.getUsuarios);
+router.get('/verregistro',(req, res)=>{
+    res.render('registro')
+});
 
 router.post('/registro',authControlador.registroUsuario);
 router.post('/inicio-sesion',authControlador.inicioSesion);
 router.post('/cierre-sesion',authControlador.cierreSesion);
-module.exports = router;
+module.exports = router; 
 /*const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');

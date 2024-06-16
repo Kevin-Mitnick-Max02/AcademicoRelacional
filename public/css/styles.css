@@ -1,0 +1,59 @@
+/* Estilo más llamativo y animado para el menú */
+
+/* Estilo para la barra de navegación */
+.navbar {
+  background-color: #4CAF50; /* Color de fondo */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #000; /* Color del texto negro */
+}
+
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+  color: #fff; /* Color del texto al pasar el mouse */
+}
+
+/* Animación para el botón de hamburguesa */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Estilo para los enlaces del menú */
+.navbar-nav .nav-link {
+  font-weight: bold; /* Texto en negrita */
+  transition: color 0.3s; /* Transición de color */
+}
+
+/* Estilo cuando el enlace está activo */
+.navbar-nav .nav-link.active {
+  color: #FFC107; /* Color del texto activo */
+}
+
+/* Efecto de transición al pasar el mouse sobre los enlaces */
+.navbar-nav .nav-link:hover {
+  color: #FFC107; /* Color del texto al pasar el mouse */
+}
+
+/* Estilo para el contenido principal */
+.container {
+  background-color: #f2f2f2; /* Color de fondo del contenido */
+  padding: 20px; /* Espaciado interno */
+}
+
+/* Animación de entrada para el contenido */
+.container {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

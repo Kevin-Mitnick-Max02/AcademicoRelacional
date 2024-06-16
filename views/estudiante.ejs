@@ -1,0 +1,59 @@
+
+  <!-- views/list.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Estudiantes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Listado de Estudiantes <a href="/api/estudiante/registroEstudiante" class="btn btn-primary">Agregar Estudiante</a> </h2>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>C.I.</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Municipio</th>
+          <th>Dirección</th>
+          <th>Teléfonos</th>
+          <th>Email</th>
+          <th>Carrera</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% estudiantes.forEach(student => { %>
+          <tr>
+            <td><%= student.Ci_Estudiante %></td>
+            <td><%= student.nombres %></td>
+            <td><%= student.apellidos %></td>
+            <td><%= student.fecha_de_nacimiento %></td>
+            <td><%= student.municipio %></td>
+            <td><%= student.direccion %></td>
+            <td><%= student.telefonos %></td>
+            <td><%= student.email %></td>
+            <td><%= student.carrera %></td>
+            <td>
+              <a href="/api/estudiante/buscar/<%= student.Ci_Estudiante %>" class="btn btn-warning btn-sm me-2">
+                <i class="bi bi-pencil-square"></i> Editar
+              </a>
+              <form action="/api/estudiante/eliminar/<%= student.Ci_Estudiante %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
